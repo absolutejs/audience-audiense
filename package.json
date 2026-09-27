@@ -1,0 +1,40 @@
+{
+	"author": "Alex Kahn",
+	"description": "Audiense adapter for @absolutejs/audience — implements the AudienceSource contract against the Audiense Insights API (reports, demographics, affinities, influencers, audience overlap). The premium social-graph backfill for AbsoluteJS audience intelligence.",
+	"dependencies": {
+		"@absolutejs/audience": "^0.0.2"
+	},
+	"devDependencies": {
+		"@absolutejs/changelog": "^0.6.0",
+		"@types/bun": "latest",
+		"typescript": "5.9.3"
+	},
+	"files": [
+		"CHANGELOG.md",
+		"LICENSE",
+		"README.md",
+		"changelog.json",
+		"dist"
+	],
+	"license": "Apache-2.0",
+	"main": "./dist/index.js",
+	"name": "@absolutejs/audience-audiense",
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/absolutejs/audience-audiense.git"
+	},
+	"scripts": {
+		"build": "rm -rf dist && bun build src/index.ts --outdir dist --target=bun --external @absolutejs/audience && tsc --emitDeclarationOnly --project tsconfig.json",
+		"release": "bun run build && bun publish",
+		"test": "bun test",
+		"typecheck": "tsc --noEmit",
+		"check:package": "absolute-changelog check",
+		"prepublishOnly": "bun run check:package"
+	},
+	"type": "module",
+	"types": "./dist/index.d.ts",
+	"version": "0.0.1"
+}
